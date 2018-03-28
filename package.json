@@ -13,7 +13,8 @@
   "author": "Ammein Nashrin",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "yargs": "^4.7.1"
   },
   "bugs": {
     "url": "https://github.com/ammein/nodejs-tutorial/issues"

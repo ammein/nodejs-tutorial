@@ -1,26 +1,25 @@
 console.log("Starting app.js");
-
+// Lodash
 const fs = require('fs');
-const os = require('os');
+const _ = require('lodash');
+const yargs = require('yargs');
 const notes = require('./notes.js');
 
-const _ = require('lodash');
+const argv = yargs.argv;
+var command = process.argv[2];
+// Now test it
+console.log("Command :" , command);
+console.log("Process" , process.argv);
+console.log("Yargs" , argv);
 
-// Expected Result : False
-// console.log(_.isString(true));
-// Expected Result : True
-// console.log(_.isString('Ammein'));
-
-// Expected Result : [ 'Andrew', 1, 'Ammein', 2, 4, 5 ]
-var filteredArray = _.uniq(['Andrew' , 1 , 'Ammein' , 2 ,4 , 5, 1]);
-console.log(filteredArray);
-
-// Get user info
-// var user = os.userInfo();
-// console.log(user);
-
-// Append File/Update File
-// fs.appendFile('greetings.txt', `Hello ${user.username} ! You are ${notes.age}`, (err) => {
-//     if(err) throw err;
-//     console.log("File Saved !");
-// });
+if (command === 'add') {
+    console.log("Adding new note");
+}else if (command === 'list'){
+    console.log("Listing all notes");
+}else if (command === 'read'){
+    console.log("Reading Note");
+}else if (command === 'remove') {
+    console.log("Removing Note");
+}else{
+    console.log("Command Not Recognized");
+}
