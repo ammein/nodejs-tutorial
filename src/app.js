@@ -12,6 +12,7 @@ var command = argv._[0]; // Select object of underscore(_) and select index 0 fo
 // console.log("Process" , process.argv);
 // console.log("Yargs" , argv);
 
+// CRUD
 if (command === 'add') {
     // body represents as value of attribute
     notes.addNote(argv.title , argv.body);
