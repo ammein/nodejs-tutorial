@@ -6,20 +6,21 @@ const yargs = require('yargs');
 const notes = require('./notes.js');
 
 const argv = yargs.argv;
-var command = process.argv[2];
+var command = argv._[0]; // Select object of underscore(_) and select index 0 for that array
 // Now test it
-console.log("Command :" , command);
-console.log("Process" , process.argv);
-console.log("Yargs" , argv);
+// console.log("Command :" , command);
+// console.log("Process" , process.argv);
+// console.log("Yargs" , argv);
 
 if (command === 'add') {
-    console.log("Adding new note");
+    // body represents as value of attribute
+    notes.addNote(argv.title , argv.body);
 }else if (command === 'list'){
-    console.log("Listing all notes");
+    notes.getAll();
 }else if (command === 'read'){
-    console.log("Reading Note");
+    notes.getNote(argv.title);
 }else if (command === 'remove') {
-    console.log("Removing Note");
+    notes.removeNote(argv.title)
 }else{
     console.log("Command Not Recognized");
 }
