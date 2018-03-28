@@ -1,10 +1,31 @@
 console.log("Starting notes.js");
-
+const fs = require('fs');
 module.exports.age = 25;
 
 var addNote = (title , body) => {
     if (!title && !body) throw "\n\n**********************************\nWrong params , must use --title and --body\n**********************************";
-    console.log("Adding Note" , title , body);
+    var notes = [];
+    var note = {
+        title,
+        body
+    };
+
+    try {
+        // this is the code that may or not may throw and error
+        var noteString = fs.readFileSync('notes-data.json');
+        notes = JSON.parse(noteString);
+        // If this fails , we don't have to worry because we have an empty array.
+    } catch (error) {
+        // will take an error argument
+        // Also have the code blocks that runs. It will only run if try has it errors
+    }
+    // filter is an array callback function
+    var duplicateNotes = notes.filter((note) => note.title === title);
+    if (duplicateNotes.length === 0) {
+        notes.push(note);
+        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    };
+    
 };
 
 var getAll = () => {
