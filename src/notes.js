@@ -9,7 +9,7 @@ var addNote = (title , body) => {
         title,
         body
     };
-
+    // deleted files/missing files method to avoid crashed
     try {
         // this is the code that may or not may throw and error
         var noteString = fs.readFileSync('notes-data.json');
