@@ -14,21 +14,27 @@ console.log("Process : " , yargs.argv , "\n\n");
 
 // CRUD
 if (command === 'add') {
-    var note = notes.addNote(argv.title , argv.body);
-    if (note){
+    var add = notes.addNote(argv.title , argv.body);
+    if (add){
         console.log('Note Created');
-        console.log('--');
-        console.log(`Title : ${note.title}`);
-        console.log(`Body : ${note.body}`);
+        notes.logNote(add);
     }else {
         console.log("Note title taken");
     }
 }else if (command === 'list'){
     notes.getAll();
 }else if (command === 'read'){
-    notes.getNote(argv.title);
+    var getExactNote = notes.getNote(argv.title);
+    if (getExactNote){
+        console.log("Received Note");
+        notes.logNote(getExactNote);
+    }else{
+        console.log("Note not found");
+    }
 }else if (command === 'remove') {
-    notes.removeNote(argv.title)
+    var noteRemoved = notes.removeNote(argv.title)
+    var message = noteRemoved ? `Note was remove --${argv.title}--` : `Note not found. You were searching : \n${argv.title}`;
+    console.log(message);
 }else{
     console.log("Command Not Recognized");
 }

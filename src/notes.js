@@ -40,20 +40,39 @@ var getAll = () => {
 
 var getNote = (a) => {
     if (!a) throw "\n\n**********************************\nWrong params , must use --title\n**********************************";
-    console.log("Getting Notes" , a);
+    // fetch notes
+    var notes = fetchNotes();
+    // filter the notes , only return notes that matches
+    var filteredNotes = notes.filter((note) => note.title === a);
+    // return statement to index array of one
+    return filteredNotes[0];
 }
 
 var removeNote = (a) => {
     if (!a) throw "\n\n**********************************\nWrong params , must use --title\n**********************************";
-    console.log("Removing Note ->",a );
+    // fetch notes
+    var notes = fetchNotes();
+    // filter notes , removing the one with title of argument. Filter takes a function
+    // note.title because in object contain 'title'
+    var filteredNotes = notes.filter((note) => note.title !== a);
+    // save new notes array
+    saveNotes(filteredNotes);
+    return notes.length !== filteredNotes.length;
 }
+
+var logNote = (note) => {
+    console.log('--');
+    console.log(`Title : ${note.title}`);
+    console.log(`Body : ${note.body}`);
+};
 
 // global export for object (More Robust)
 module.exports = {
     addNote, //ES6 Syntax similar to addNote : addNote
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 };
 
 module.exports.add = (a , b) => {
