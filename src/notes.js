@@ -1,5 +1,3 @@
-import { debug } from 'util';
-
 console.log("Starting notes.js");
 const fs = require('fs');
 module.exports.age = 25;
@@ -37,6 +35,7 @@ var addNote = (title , body) => {
 };
 
 var getAll = () => {
+    return fetchNotes();
     console.log("Getting All Notes");
 };
 
@@ -63,7 +62,6 @@ var removeNote = (a) => {
 }
 
 var logNote = (note) => {
-    debugger;
     console.log('----');
     console.log(`Title : ${note.title}`);
     console.log(`Body : ${note.body}`);
