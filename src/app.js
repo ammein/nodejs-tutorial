@@ -1,4 +1,3 @@
-console.log("Starting app.js");
 // Lodash
 const fs = require('fs');
 const _ = require('lodash');
@@ -7,10 +6,6 @@ const notes = require('./notes.js');
 
 const argv = yargs.argv;
 var command = argv._[0]; // Select object of underscore(_) and select index 0 for that array
-// Now test it
-console.log("\n\nCommand :" , command , "\n\n");
-console.log("Process : " , yargs.argv , "\n\n");
-// console.log("Yargs" , argv);
 
 // CRUD
 if (command === 'add') {
@@ -23,7 +18,7 @@ if (command === 'add') {
     }
 }else if (command === 'list'){
     var allNotes = notes.getAll();
-    console.log(`Printing ${allNotes.length} note(s)`);
+    console.log(`\n\nPrinting ${allNotes.length} note(s)`);
     allNotes.forEach((note) => notes.logNote(note));
 }else if (command === 'read'){
     var getExactNote = notes.getNote(argv.title);

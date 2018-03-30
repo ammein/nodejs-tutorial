@@ -1,6 +1,4 @@
-console.log("Starting notes.js");
 const fs = require('fs');
-module.exports.age = 25;
 
 var fetchNotes = () => {
     // Fetching notes here
