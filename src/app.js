@@ -4,7 +4,18 @@ const _ = require('lodash');
 const yargs = require('yargs');
 const notes = require('./notes.js');
 
-const argv = yargs.argv;
+const argv = yargs
+.command('add' , 'Add a new note', {
+    title : {
+        describe : "Title of note",
+        // demand is set by default is false
+        // If set to false , it will show a normal node error
+        demand : true,
+        alias : 't'
+    }
+})
+.help()
+.argv;
 var command = argv._[0]; // Select object of underscore(_) and select index 0 for that array
 
 // CRUD
