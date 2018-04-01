@@ -4,18 +4,36 @@ const _ = require('lodash');
 const yargs = require('yargs');
 const notes = require('./notes.js');
 
+const titleOptions = {
+    describe: "Title of note",
+    // demand is set by default is false
+    // If set to false , it will show a normal node error
+    demand: true,
+    alias: 't'
+}
+
+const bodyOptions = {
+    describe: "Your Content (If any)",
+    alias: "b" // Shortcut key
+}
+
 const argv = yargs
 .command('add' , 'Add a new note', {
-    title : {
-        describe : "Title of note",
-        // demand is set by default is false
-        // If set to false , it will show a normal node error
-        demand : true,
-        alias : 't'
-    }
+    title : titleOptions,
+    body : bodyOptions
+})
+.command('list' , 'List ALL NOTES')
+.command('read' , 'Read the Note' , {
+    title: titleOptions
+})
+.command('remove' , 'Remove a Note' , {
+    title: titleOptions
 })
 .help()
 .argv;
+
+
+// Simple command
 var command = argv._[0]; // Select object of underscore(_) and select index 0 for that array
 
 // CRUD
